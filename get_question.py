@@ -35,19 +35,8 @@ class FormatQuestions:
         choices.append(correct)
         return choices
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def check_correct_answer(self,answer_choice):
+        if answer_choice == self.correct_answer:
+            return True
+        else:
+            return False

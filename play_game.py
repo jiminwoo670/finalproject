@@ -1,3 +1,5 @@
+import html
+
 from get_question import GetQuestions, FormatQuestions
 from players import Players
 from player_individual import PlayerIndividual
@@ -26,6 +28,17 @@ class PlayGame:
                 print(format.return_question())
                 choices = format.shuffle_choices()
                 for choice_index, choice in enumerate(choices):
+                    print(f"{choice_index+1}.{html.unescape(choice)}")
+                answer_choice_index = int(input("What is your answer choice (choose 1 to 4):")) -1
+                answer_choice = choices[answer_choice_index]
+                correct = format.check_correct_answer(answer_choice)
+                if correct == True:
+                    player.player_individual_points(difficulty+1)
+
+
+
+
+
 
 
 
