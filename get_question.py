@@ -8,6 +8,25 @@ class GetQuestions:
         self.category_science = [17,18,19,30]
 
 
+    def which_category(self,score):
+        general_knowledge_index = [0, 3, 6, 9, 12, 15, 18]
+        science_index = [1, 4, 7, 10, 13, 16, 19]
+        entertainment_index = [2, 5, 8, 11, 14, 17, 20]
+        for i in general_knowledge_index:
+            if score == i:
+                return "general_knowledge"
+
+        for i in science_index:
+            if score == i:
+                return "science"
+
+        for i in entertainment_index:
+            if score == i:
+                return "entertainment"
+
+
+
+
     def get_question(self,category,difficulty):
         category_id = None
         if category == "general_knowledge":
@@ -40,3 +59,5 @@ class FormatQuestions:
             return True
         else:
             return False
+
+
