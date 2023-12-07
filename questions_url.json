@@ -5,24 +5,24 @@
             "type": "multiple",
             "difficulty": "medium",
             "category": "Sports",
-            "question": "Who won the 2018 Monaco Grand Prix?",
-            "correct_answer": "Daniel Ricciardo",
+            "question": "How many French Open&#039;s did Bj&ouml;rn Borg win?",
+            "correct_answer": "6",
             "incorrect_answers": [
-                "Sebastian Vettel",
-                "Kimi Raikkonen",
-                "Lewis Hamilton"
+                "4",
+                "9",
+                "2"
             ]
         },
         {
             "type": "multiple",
-            "difficulty": "easy",
+            "difficulty": "hard",
             "category": "Sports",
-            "question": "Who won the 2015 Formula 1 World Championship?",
-            "correct_answer": "Lewis Hamilton",
+            "question": "The Mazda 787B won the 24 Hours of Le Mans in what year?",
+            "correct_answer": "1991",
             "incorrect_answers": [
-                "Nico Rosberg",
-                "Sebastian Vettel",
-                "Jenson Button"
+                "1990",
+                "2000",
+                "1987"
             ]
         },
         {
@@ -35,40 +35,6 @@
                 "Chris Benoit",
                 "Lex Luger",
                 "Al Snow"
-            ]
-        },
-        {
-            "type": "multiple",
-            "difficulty": "medium",
-            "category": "Sports",
-            "question": "What is the name of the AHL affiliate of the Toronto Maple Leafs?",
-            "correct_answer": "Toronto Marlies",
-            "incorrect_answers": [
-                "Toronto Rock",
-                "Toronto Argonauts",
-                "Toronto Wolfpack"
-            ]
-        },
-        {
-            "type": "boolean",
-            "difficulty": "easy",
-            "category": "Sports",
-            "question": "There are a total of 20 races in Formula One 2016 season.",
-            "correct_answer": "False",
-            "incorrect_answers": [
-                "True"
-            ]
-        },
-        {
-            "type": "multiple",
-            "difficulty": "medium",
-            "category": "Sports",
-            "question": "Which team was the 2014-2015 NBA Champions?",
-            "correct_answer": "Golden State Warriors",
-            "incorrect_answers": [
-                "Cleveland Cavaliers",
-                "Houston Rockets",
-                "Atlanta Hawks"
             ]
         },
         {
@@ -87,36 +53,72 @@
             "type": "multiple",
             "difficulty": "easy",
             "category": "Sports",
-            "question": "Who won the premier league title in the 2015-2016 season following a fairy tale run?",
-            "correct_answer": "Leicester City",
+            "question": "Who is often called &quot;the Maestro&quot; in the men&#039;s tennis circuit?",
+            "correct_answer": "Roger Federer",
             "incorrect_answers": [
-                "Tottenham Hotspur",
-                "Watford",
-                "Stoke City"
+                "Bill Tilden",
+                "Boris Becker",
+                "Pete Sampras"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "easy",
+            "category": "Sports",
+            "question": "How many soccer players should be on the field at the same time?",
+            "correct_answer": "22",
+            "incorrect_answers": [
+                "20",
+                "24",
+                "26"
             ]
         },
         {
             "type": "multiple",
             "difficulty": "medium",
             "category": "Sports",
-            "question": "In a game of snooker, what colour ball is worth 3 points?",
-            "correct_answer": "Green",
+            "question": "What cricketing term denotes a batsman being dismissed with a score of zero?",
+            "correct_answer": "Duck",
             "incorrect_answers": [
-                "Yellow",
-                "Brown",
-                "Blue"
+                "Bye",
+                "Beamer",
+                "Carry"
             ]
         },
         {
             "type": "multiple",
-            "difficulty": "hard",
+            "difficulty": "medium",
             "category": "Sports",
-            "question": "Where was the Games of the XXII Olympiad held?",
-            "correct_answer": "Moscow",
+            "question": "How many premier league trophies did Sir Alex Ferguson win during his time at Manchester United?",
+            "correct_answer": "13",
             "incorrect_answers": [
-                "Barcelona",
-                "Tokyo",
-                "Los Angeles"
+                "11",
+                "20",
+                "22"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "easy",
+            "category": "Sports",
+            "question": "Which African American is in part responsible for integrating  Major League baseball?",
+            "correct_answer": "Jackie Robinson",
+            "incorrect_answers": [
+                "Curt Flood",
+                "Roy Campanella",
+                "Satchell Paige"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "easy",
+            "category": "Sports",
+            "question": "What team won the 2016 MLS Cup?",
+            "correct_answer": "Seattle Sounders",
+            "incorrect_answers": [
+                "Colorado Rapids",
+                "Toronto FC",
+                "Montreal Impact"
             ]
         }
     ]
