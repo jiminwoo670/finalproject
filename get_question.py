@@ -38,6 +38,7 @@ class GetQuestions:
 
         return requests.get(f"https://opentdb.com/api.php?amount=1&category={category_id}&difficulty={difficulty}&type=multiple")
 
+
 class FormatQuestions:
     def __init__(self,json):
         self.correct_answer = json["correct_answer"]
