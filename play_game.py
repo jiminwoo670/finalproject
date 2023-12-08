@@ -28,7 +28,7 @@ class PlayGame:
             while difficulty not in range(0, 3):
                 difficulty = int(input("invalid input, please enter number between 1 to 3:"))
             # fetches question from api from the GetQuestions class
-            question_json = question.get_question(get_category,self.difficulty[difficulty]).json()
+            question_json = question.get_question(get_category, self.difficulty[difficulty]).json()
             # sends question into FormatQuestion class to be formatted
             format = FormatQuestions(question_json["results"][0])
             # prints the question
@@ -55,7 +55,7 @@ class PlayGame:
             # does nothing if wrong
             else:
                 print("Incorrect Answer")
-
+            # ends the game
             if player.get_player_score() >= 20:
                 print(f"Congratulations! {player.return_player_name()} has reached 20 points. Game over!")
                 players.player_leaderboard()

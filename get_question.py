@@ -3,8 +3,8 @@ import random
 import html
 class GetQuestions:
     def __init__(self):
-        self.category_general_knowledge = [9,20,21,22,23,24,25,28]
-        self.category_entertainment = [11,12,13,14,15,26,29,32]
+        self.category_general_knowledge = [9,21,22,23,24]
+        self.category_entertainment = [11,12,14,15,26,32]
         self.category_science = [17,18,19,30]
 
 
@@ -27,7 +27,7 @@ class GetQuestions:
 
 
 
-    def get_question(self,category,difficulty):
+    def get_question(self, category, difficulty):
         category_id = None
         if category == "general_knowledge":
             category_id = random.choice(self.category_general_knowledge)
@@ -37,6 +37,13 @@ class GetQuestions:
             category_id = random.choice(self.category_science)
 
         return requests.get(f"https://opentdb.com/api.php?amount=1&category={category_id}&difficulty={difficulty}&type=multiple")
+
+    """def get_single_question(self,question_json):
+        questions = question_json["results"]
+        question = random.choice(questions)
+        return question"""
+
+
 
 
 class FormatQuestions:

@@ -8,11 +8,7 @@ class Players:
         """
         Asks name of player and appends name
         """
-        player_count = input("How many players for this game:")
-        while type(player_count) == str or type(player_count == float):
-            print("Please input a whole number")
-            player_count = input("How many players for this game:")
-
+        player_count = int(input("How many players for this game:"))
         for i in range(int(player_count)):
             name = input("What is your name:")
             self.players.append(PlayerIndividual(name))
@@ -31,13 +27,22 @@ class Players:
                 return"Player not found"
 
     def player_leaderboard(self):
-        player_dict_lst = []
+        file_path = "player_stats.json"
+        try:
+            with open(file_path, "r") as player_stats_file:
+                existing_data = json.load(player_stats_file)
+        except FileNotFoundError:
+            # If the file doesn't exist yet, initialize with an empty list
+            existing_data = []
+
+        if not isinstance(existing_data, list):
+            existing_data = []
+
         for player in self.players:
-            player_dict_lst.append(player.get_player_object_dict())
+            existing_data.append(player.get_player_object_dict())
 
-        with open("player_stats.json","w") as player_stats:
-            json.dump(player_dict_lst,player_stats,indent=4)
-
+        with open(file_path, "w") as player_stats_file:
+            json.dump(existing_data, player_stats_file, indent=4)
 
 
 
