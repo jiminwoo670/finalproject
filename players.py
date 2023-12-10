@@ -26,13 +26,16 @@ class Players:
             else:
                 return"Player not found"
 
-    def player_leaderboard(self):
-        file_path = "player_stats.json"
+    def player_stats_json(self):
+        """
+        puts the user's name and score into a json file to make a leaderboard
+        """
+        leader_board_json = "player_stats.json"
         try:
-            with open(file_path, "r") as player_stats_file:
+            with open(leader_board_json, "r") as player_stats_file:
                 existing_data = json.load(player_stats_file)
         except FileNotFoundError:
-            # If the file doesn't exist yet, initialize with an empty list
+            # if file does not exist yet make a emtpy list
             existing_data = []
 
         if not isinstance(existing_data, list):
@@ -41,8 +44,21 @@ class Players:
         for player in self.players:
             existing_data.append(player.get_player_object_dict())
 
-        with open(file_path, "w") as player_stats_file:
+        with open(leader_board_json, "w") as player_stats_file:
             json.dump(existing_data, player_stats_file, indent=4)
+
+        sorted_players = sorted(existing_data, key=lambda x: x['score'], reverse=True)
+        rank = 1
+        for player in sorted_players:
+            print(f"{rank}. {player['name']} - Score: {player['score']}")
+            rank += 1
+
+
+
+
+    def delete_player(self):
+
+
 
 
 

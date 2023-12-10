@@ -22,11 +22,16 @@ def test_find_player():
     assert player.find_player("jimin") == "jimin"
     assert player.find_player("cheese") == "Player not found"
 
+def test_player_leaderboard():
+    player = Players()
+    make_leader_board = player.player_stats_json()
+    print(make_leader_board)
 
 
 def main():
-    test_adding_players()
-    test_find_player()
+    #test_adding_players()
+    #test_find_player()
+    test_player_leaderboard()
 
 
 main()
