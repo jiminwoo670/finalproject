@@ -1,10 +1,9 @@
-from flask import Flask, request,redirect,url_for
+from flask import Flask, request,redirect, url_for
 from players import Players
-
+from player_individual import PlayerIndividual
 
 app = Flask(__name__)
 players = Players()
-
 
 @app.route('/')
 def home():
@@ -15,16 +14,15 @@ def home():
              <a href="/instructions">Instructions</a>
              <br><br>
              <a href="/play_game">Play_Game</a>
-
-
     """
-
 
 @app.route('/play_game', methods=["GET", "POST"])
 def play_game():
+    players_list = request.args.getlist('players')
     if request.method == 'POST':
         if 'start_game' in request.form:
-            return redirect(url_for('start_game'))
+            return redirect(url_for('start_game', players=players_list))
+
     return """
      <form action=/add_players method="post">
         <label for="player_name">Enter Player Name:</label>
@@ -33,14 +31,19 @@ def play_game():
         </form>
         <form action=/start_game method="get">
         <button type="submit" name="start_game">Start Game</button>
-    </form>
+        <input type="hidden" name="players" value="{{ players|join(',') }}">
+        </form>
     """
 
-
-@app.route('/start_game', methods=["GET"])
+@app.route('/start_game', methods=["get"])
 def start_game():
-    return "Game Started!"
+    players_list = request.args.get('players')
 
+    #name_lst = []
+    #for players in players_list:
+      #  players.return_player_name()
+
+    return f"Game Started with Players: {', '.join(players_list)}"
 
 @app.route('/add_players', methods=["POST"])
 def add_players():
@@ -51,18 +54,12 @@ def add_players():
         # Add the player to the Players instance
         players.add_players(player_name)
 
-    return """
-        <form method="POST">
-        <label for="player_name">Add Player:</label>
-        <input type="text" name="player_name">
-        <button type="submit">Add Player</button>
-        </form>
-        <form action=/start_game method="get">
-         <button type="submit" name="start_game">Start Game</button>
-         </form>
-         
-         """
+    # Get the current list of players
+    players_list = players.return_player_objects()
+    print(players_list)
 
+    # Redirect to the /play_game route with the updated list of players in the URL
+    return redirect(url_for('play_game', players=players_list))
 
 @app.route('/instructions')
 def instructions():
@@ -74,9 +71,7 @@ def instructions():
     on a scale of 1 to 3, how well you know that category. Depending on how well you know that category, 
     <br>
     you will earn points. Example: On a scale of 1 to 3 you choose 2 for the science category,
-
     """
-
 
 if __name__ == "__main__":
     app.run(host="localhost", debug=True)
