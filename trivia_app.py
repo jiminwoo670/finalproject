@@ -1,7 +1,9 @@
 from flask import Flask, request
-
+from players import Players
 
 app = Flask(__name__)
+players_lst = Players()
+
 @app.route('/')
 def home():
     return """
@@ -17,10 +19,12 @@ def home():
 @app.route('/play_game')
 def play_game():
 
-
     return"""
-    
-    """
+    <form action=/add_players method="post">
+        <label for="player_name">Enter Player Name:</label>
+        <input type="text" id="player_name" name="player_name" required>
+        <button type="submit">Add Player</button>
+    </form>"""
 
 @app.route('/instructions')
 def instructions():

@@ -56,9 +56,10 @@ class PlayGame:
             else:
                 print("Incorrect Answer")
             # ends the game
-            if player.get_player_score() >= 20:
+            if player.get_player_score() >= 1:
                 print(f"Congratulations! {player.return_player_name()} has reached 20 points. Game over!")
-                players.player_leaderboard()
+                leader_board = players.player_leaderboard()
+                print(leader_board)
                 return True
 
 

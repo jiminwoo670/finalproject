@@ -41,8 +41,14 @@ class Players:
         for player in self.players:
             existing_data.append(player.get_player_object_dict())
 
+        existing_data.sort(key=lambda x: x.get('score', 0), reverse=True)
+
         with open(file_path, "w") as player_stats_file:
             json.dump(existing_data, player_stats_file, indent=4)
+
+        print("Player Leaderboard:")
+        for player_data in existing_data:
+            print(f"{player_data['name']} - Points: {player_data['score']}")
 
 
 
