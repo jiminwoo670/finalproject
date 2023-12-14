@@ -1,9 +1,12 @@
-from flask import Flask, request
+from flask import Flask, request,redirect,url_for
+from players import Players
 
 
 app = Flask(__name__)
+players = Players()
 @app.route('/')
 def home():
+
     return """
     <html><body>
              <h1>Welcome to the Jimin's Trivia Game </h1>
@@ -14,13 +17,41 @@ def home():
              
              
     """
-@app.route('/play_game')
+@app.route('/play_game',methods=["GET", "POST"])
 def play_game():
+    if request.method == 'POST':
+        if 'start_game' in request.form:
+            return redirect(url_for('start_game'))
+    return"""
+     <form action=/add_players method="post">
+        <label for="player_name">Enter Player Name:</label>
+        <input type="text" id="player_name" name="player_name">
+        <button type="submit">Add Player</button>
+        <form action=/start_game method="get">
+        <button type="submit" name="start_game">Start Game</button>
+    </form>
+    """
 
+@app.route('/start_game', methods=["GET"])
+def start_game():
+    return "Game Started!"
+@app.route('/add_players', methods=["POST"])
+def add_players():
+    if request.method == 'POST':
+        # Get the player name from the form
+        player_name = request.form.get('player_name')
+
+        # Add the player to the Players instance
+        players.add_players(player_name)
 
     return"""
-    
-    """
+        <form method="POST">
+        <label for="player_name">Add Player:</label>
+        <input type="text" name="player_name">
+        <button type="submit">Add Player</button>
+        <form action=/start_game method="get">
+         <button type="submit" name="start_game">Start Game</button>
+         """
 
 @app.route('/instructions')
 def instructions():

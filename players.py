@@ -4,14 +4,12 @@ class Players:
     def __init__(self):
         self.players = []
 
-    def add_players(self):
+    def add_players(self,name):
         """
         Asks name of player and appends name
         """
-        player_count = int(input("How many players for this game:"))
-        for i in range(int(player_count)):
-            name = input("What is your name:")
-            self.players.append(PlayerIndividual(name))
+
+        self.players.append(PlayerIndividual(name))
 
     def find_player(self,name):
         """
@@ -57,6 +55,7 @@ class Players:
 
 
     def delete_player(self):
+        pass
 
 
 
