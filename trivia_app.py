@@ -35,15 +35,17 @@ def play_game():
         </form>
     """
 
-@app.route('/start_game', methods=["get"])
+@app.route('/start_game')
 def start_game():
-    players_list = request.args.get('players')
 
-    #name_lst = []
-    #for players in players_list:
-      #  players.return_player_name()
+    name_and_scores = []
 
-    return f"Game Started with Players: {', '.join(players_list)}"
+
+
+    for player in players.return_player_objects():
+        name_and_scores.append({player.return_player_name(): player.get_player_score()})
+
+    return f"Players and Scores: {', '.join(str(item) for item in name_and_scores)}"
 
 @app.route('/add_players', methods=["POST"])
 def add_players():
@@ -56,7 +58,7 @@ def add_players():
 
     # Get the current list of players
     players_list = players.return_player_objects()
-    print(players_list)
+
 
     # Redirect to the /play_game route with the updated list of players in the URL
     return redirect(url_for('play_game', players=players_list))
