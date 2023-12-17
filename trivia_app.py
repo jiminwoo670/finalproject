@@ -1,9 +1,11 @@
 from flask import Flask, request,redirect, url_for
 from players import Players
 from player_individual import PlayerIndividual
+from get_question import GetQuestions
 
 app = Flask(__name__)
 players = Players()
+questions = GetQuestions()
 
 @app.route('/')
 def home():
@@ -34,6 +36,21 @@ def play_game():
         <input type="hidden" name="players" value="{{ players|join(',') }}">
         </form>
     """
+def ask_questions():
+
+
+    for player_name in players.return_player_objects():
+        # Assume you have a function get_question_for_player(player_name) that returns a question for each player
+        question_category = questions.which_category(player_name.get_player_score())
+
+        # Display the question and gather the player's response
+        response = input(f"{player_name}, {question} Enter your answer: ")
+
+        # Process the response (check correctness, update scores, etc.)
+        process_response(player_name, response)
+
+    # Redirect to the route that shows the scores
+    return redirect(url_for('show_scores', players=players.return_player_objects()))
 
 @app.route('/start_game')
 def start_game():
